@@ -1,6 +1,6 @@
 import {ITEM_SEARCH_FAILURE, ITEM_SEARCH_REQUEST, ITEM_SEARCH_SUCCESS} from "../constants/actionTypes";
 
-export function itemSearchFetch(server, itemName) {
+export function itemSearchFetch(itemName) {
     return dispatch => {
         dispatch(itemSearchStart());
 
@@ -20,41 +20,41 @@ export function itemSearchFetch(server, itemName) {
             },
             "Results": [{
                 "ID": 23841,
-                "Icon": "\/i\/048000\/048247.png",
+                "Icon": "/i/048000/048247.png",
                 "Name": "Rakshasa Ring of Fending",
-                "Url": "\/Item\/23841",
+                "Url": "/Item/23841",
                 "UrlType": "Item",
                 "_": "item",
                 "_Score": 1
             }, {
                 "ID": 23842,
-                "Icon": "\/i\/048000\/048247.png",
+                "Icon": "/i/048000/048247.png",
                 "Name": "Rakshasa Ring of Slaying",
-                "Url": "\/Item\/23842",
+                "Url": "/Item/23842",
                 "UrlType": "Item",
                 "_": "item",
                 "_Score": 1
             }, {
                 "ID": 23843,
-                "Icon": "\/i\/048000\/048247.png",
+                "Icon": "/i/048000/048247.png",
                 "Name": "Rakshasa Ring of Aiming",
-                "Url": "\/Item\/23843",
+                "Url": "/Item/23843",
                 "UrlType": "Item",
                 "_": "item",
                 "_Score": 1
             }, {
                 "ID": 23844,
-                "Icon": "\/i\/048000\/048247.png",
+                "Icon": "/i/048000/048247.png",
                 "Name": "Rakshasa Ring of Healing",
-                "Url": "\/Item\/23844",
+                "Url": "/Item/23844",
                 "UrlType": "Item",
                 "_": "item",
                 "_Score": 1
             }, {
                 "ID": 23845,
-                "Icon": "\/i\/048000\/048247.png",
+                "Icon": "/i/048000/048247.png",
                 "Name": "Rakshasa Ring of Casting",
-                "Url": "\/Item\/23845",
+                "Url": "/Item/23845",
                 "UrlType": "Item",
                 "_": "item",
                 "_Score": 1

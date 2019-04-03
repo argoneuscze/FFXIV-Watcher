@@ -3,26 +3,14 @@ import SearchBox from "../components/item_search/SearchBox";
 import SearchResultsTable from "../components/item_search/SearchResultsTable";
 import {itemSearchFetch} from "../actions/itemSearchActions";
 import {connect} from "react-redux";
+import {watchlistAdd, watchlistRemove} from "../actions/watchlistActions";
 
 class ItemSearchContainer extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.handleItemSearch = this.handleItemSearch.bind(this);
-    }
-
-    handleItemSearch(itemName) {
-        // debug
-        itemName = 'rakshasa';
-
-        this.props.dispatch(itemSearchFetch(itemName))
-    }
-
     render() {
         return (
             <div>
                 {this.props.isFetching && <p>Loading...</p>}
-                <SearchBox onSearch={this.handleItemSearch}/>
+                <SearchBox onSearch={this.props.itemSearchFetch}/>
                 {this.props.error.length > 0 && <p>Error occurred</p>}
                 <SearchResultsTable data={this.props.data}/>
             </div>
@@ -31,12 +19,21 @@ class ItemSearchContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const {search} = state;
+    const {search, watchlist} = state;
+    const watched_items = new Set();
+    Object.keys(watchlist.items).forEach((value => watched_items.add(value)));
     return {
         isFetching: search.isFetching,
         error: search.error_message,
-        data: search.data
+        data: search.data,
+        watched: watched_items
     }
 }
 
-export default connect(mapStateToProps)(ItemSearchContainer);
+const mapDispatchToProps = {
+    itemSearchFetch,
+    watchlistAdd,
+    watchlistRemove
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemSearchContainer);
