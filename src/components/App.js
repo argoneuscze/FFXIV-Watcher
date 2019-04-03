@@ -8,12 +8,12 @@ import ItemWatcher from "./item_watcher/item_watcher";
 class App extends Component {
     render() {
         return (
-            <Layout>
-                <HashRouter>
+            <HashRouter>
+                <Layout>
                     <Route path="/" exact component={ItemWatcher}/>
                     <Route path="/search" exact component={SearchResults}/>
-                </HashRouter>
-            </Layout>
+                </Layout>
+            </HashRouter>
         );
     }
 }
