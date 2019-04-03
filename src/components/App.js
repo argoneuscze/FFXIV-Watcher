@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import './App.css';
 import Layout from "../containers/layout";
 import {HashRouter, Route} from "react-router-dom";
-import SearchResults from "./item_search/search_results";
-import ItemWatcher from "./item_watcher/item_watcher";
+import ItemSearchContainer from "../containers/item_search_container";
+import ItemWatcherContainer from "../containers/item_watcher_container";
 
 class App extends Component {
     render() {
         return (
             <HashRouter>
                 <Layout>
-                    <Route path="/" exact component={ItemWatcher}/>
-                    <Route path="/search" exact component={SearchResults}/>
+                    <Route path="/" exact component={ItemWatcherContainer}/>
+                    <Route path="/search" exact component={ItemSearchContainer}/>
                 </Layout>
             </HashRouter>
         );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ItemWatcher extends React.Component {
+export default class ItemWatcherTable extends React.Component {
     render() {
         return (
             "watcher"

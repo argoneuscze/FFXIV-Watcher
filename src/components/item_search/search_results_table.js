@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class SearchResults extends React.Component {
+export default class SearchResultsTable extends React.Component {
     render() {
         return (
             "results"
