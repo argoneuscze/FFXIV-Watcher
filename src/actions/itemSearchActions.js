@@ -1,21 +1,99 @@
-import {ITEM_SEARCH_FAILURE, ITEM_SEARCH_SUCCESS} from "../constants/actionTypes";
+import {ITEM_SEARCH_FAILURE, ITEM_SEARCH_REQUEST, ITEM_SEARCH_SUCCESS} from "../constants/actionTypes";
 
-export function itemSearchRequest(server, itemName) {
+export function itemSearchFetch(server, itemName) {
     return dispatch => {
-        console.log('fetching')
+        dispatch(itemSearchStart());
+
+        // TODO axios get api
+        // e.g. https://xivapi.com/search?indexes=Item&string=rakshasa%20ring
+
+        // debug for now
+        const data = {
+            "Pagination": {
+                "Page": 1,
+                "PageNext": null,
+                "PagePrev": null,
+                "PageTotal": 1,
+                "Results": 5,
+                "ResultsPerPage": 100,
+                "ResultsTotal": 5
+            },
+            "Results": [{
+                "ID": 23841,
+                "Icon": "\/i\/048000\/048247.png",
+                "Name": "Rakshasa Ring of Fending",
+                "Url": "\/Item\/23841",
+                "UrlType": "Item",
+                "_": "item",
+                "_Score": 1
+            }, {
+                "ID": 23842,
+                "Icon": "\/i\/048000\/048247.png",
+                "Name": "Rakshasa Ring of Slaying",
+                "Url": "\/Item\/23842",
+                "UrlType": "Item",
+                "_": "item",
+                "_Score": 1
+            }, {
+                "ID": 23843,
+                "Icon": "\/i\/048000\/048247.png",
+                "Name": "Rakshasa Ring of Aiming",
+                "Url": "\/Item\/23843",
+                "UrlType": "Item",
+                "_": "item",
+                "_Score": 1
+            }, {
+                "ID": 23844,
+                "Icon": "\/i\/048000\/048247.png",
+                "Name": "Rakshasa Ring of Healing",
+                "Url": "\/Item\/23844",
+                "UrlType": "Item",
+                "_": "item",
+                "_Score": 1
+            }, {
+                "ID": 23845,
+                "Icon": "\/i\/048000\/048247.png",
+                "Name": "Rakshasa Ring of Casting",
+                "Url": "\/Item\/23845",
+                "UrlType": "Item",
+                "_": "item",
+                "_Score": 1
+            }],
+            "SpeedMs": 6
+        };
+
+        const items = Object.values(data.Results).reduce((acc, val) => {
+            const new_val = {ID: val.ID, name: val.Name};
+            acc.push(new_val);
+            return acc;
+        }, []);
+
+        dispatch(itemSearchSuccess({
+            payload: {
+                items: items
+            }
+        }));
     }
 }
 
-export function itemSearchSuccess(data) {
+function itemSearchStart() {
+    return {
+        type: ITEM_SEARCH_REQUEST
+    }
+}
+
+function itemSearchSuccess(data) {
     return {
         type: ITEM_SEARCH_SUCCESS,
         payload: {
+            //items: data
+            // debug
             items: data
         }
     }
 }
 
-export function itemSearchFailure(msg) {
+function itemSearchFailure(msg) {
     return {
         type: ITEM_SEARCH_FAILURE,
         payload: {

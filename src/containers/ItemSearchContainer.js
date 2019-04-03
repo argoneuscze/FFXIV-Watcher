@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBox from "../components/item_search/SearchBox";
 import SearchResultsTable from "../components/item_search/SearchResultsTable";
-import {itemSearchRequest} from "../actions/itemSearchActions";
+import {itemSearchFetch} from "../actions/itemSearchActions";
 import {connect} from "react-redux";
 
 class ItemSearchContainer extends React.Component {
@@ -11,22 +11,32 @@ class ItemSearchContainer extends React.Component {
         this.handleItemSearch = this.handleItemSearch.bind(this);
     }
 
-    handleItemSearch(server, itemName) {
+    handleItemSearch(itemName) {
         // debug
-        server = 'Brynhildr';
         itemName = 'rakshasa';
 
-        this.props.dispatch(itemSearchRequest(server, itemName))
+        this.props.dispatch(itemSearchFetch(itemName))
     }
 
     render() {
         return (
             <div>
+                {this.props.isFetching && <p>Loading...</p>}
                 <SearchBox onSearch={this.handleItemSearch}/>
-                <SearchResultsTable/>
+                {this.props.error.length > 0 && <p>Error occurred</p>}
+                <SearchResultsTable data={this.props.data}/>
             </div>
         );
     }
 }
 
-export default connect()(ItemSearchContainer);
+function mapStateToProps(state) {
+    const {search} = state;
+    return {
+        isFetching: search.isFetching,
+        error: search.error_message,
+        data: search.data
+    }
+}
+
+export default connect(mapStateToProps)(ItemSearchContainer);
