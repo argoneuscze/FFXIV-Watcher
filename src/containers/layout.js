@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "../components/common/header";
+import Header from "../components/common/Header";
 
 export default class Layout extends React.Component {
     render() {

@@ -3,7 +3,9 @@ import React from 'react';
 export default class SearchBox extends React.Component {
     render() {
         return (
-            "box"
+            <div>
+                <button onClick={this.props.onSearch}>Load</button>
+            </div>
         );
     }
 }
