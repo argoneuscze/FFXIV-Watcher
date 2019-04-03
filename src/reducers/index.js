@@ -1,6 +1,8 @@
 import {combineReducers} from "redux";
-import {itemSearchReducer} from "./itemSearchReducers";
+import {itemSearchReducer} from "./itemSearchReducer";
+import {watchlistReducer} from "./watchlistReducer";
 
 export default combineReducers({
-    search: itemSearchReducer
+    search: itemSearchReducer,
+    watchlist: watchlistReducer
 })
