@@ -10,11 +10,11 @@ export function watchlistAdd(item) {
     }
 }
 
-export function watchlistRemove(id) {
+export function watchlistRemove(item) {
     return {
         type: WATCHLIST_REMOVE,
         payload: {
-            id: id
+            id: item.ID
         }
     }
 }

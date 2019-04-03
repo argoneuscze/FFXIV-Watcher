@@ -12,7 +12,8 @@ class ItemSearchContainer extends React.Component {
                 {this.props.isFetching && <p>Loading...</p>}
                 <SearchBox onSearch={this.props.itemSearchFetch}/>
                 {this.props.error.length > 0 && <p>Error occurred</p>}
-                <SearchResultsTable data={this.props.data}/>
+                <SearchResultsTable data={this.props.data} watched={this.props.watched}
+                                    watchAdd={this.props.watchlistAdd} watchRemove={this.props.watchlistRemove}/>
             </div>
         );
     }
@@ -21,7 +22,7 @@ class ItemSearchContainer extends React.Component {
 function mapStateToProps(state) {
     const {search, watchlist} = state;
     const watched_items = new Set();
-    Object.keys(watchlist.items).forEach((value => watched_items.add(value)));
+    Object.keys(watchlist.items).forEach((value => watched_items.add(parseInt(value))));
     return {
         isFetching: search.isFetching,
         error: search.error_message,
