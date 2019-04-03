@@ -2,11 +2,27 @@ import React from 'react';
 
 export default class SearchResultsTable extends React.Component {
     render() {
-        // TODO draw data into a table etc.
-        console.log(this.props.data);
+        const items = this.props.data.map(val => {
+            return (
+                <tr key={val.ID}>
+                    <td>{val.ID}</td>
+                    <td>{val.name}</td>
+                </tr>
+            )
+        });
 
         return (
-            "results"
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                {items}
+                </tbody>
+            </table>
         );
     }
 }

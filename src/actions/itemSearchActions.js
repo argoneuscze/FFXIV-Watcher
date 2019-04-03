@@ -62,17 +62,11 @@ export function itemSearchFetch(server, itemName) {
             "SpeedMs": 6
         };
 
-        const items = Object.values(data.Results).reduce((acc, val) => {
-            const new_val = {ID: val.ID, name: val.Name};
-            acc.push(new_val);
-            return acc;
-        }, []);
+        const items = data.Results.map(val => {
+            return {ID: val.ID, name: val.Name};
+        });
 
-        dispatch(itemSearchSuccess({
-            payload: {
-                items: items
-            }
-        }));
+        dispatch(itemSearchSuccess(items));
     }
 }
 
@@ -86,8 +80,6 @@ function itemSearchSuccess(data) {
     return {
         type: ITEM_SEARCH_SUCCESS,
         payload: {
-            //items: data
-            // debug
             items: data
         }
     }
