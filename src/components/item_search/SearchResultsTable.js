@@ -15,7 +15,7 @@ export default class SearchResultsTable extends React.Component {
                         {!this.isWatched(val.ID) ? (
                             <button onClick={() => this.props.watchAdd(val)}>Watch</button>
                         ) : (
-                            <button onClick={() => this.props.watchRemove(val)}>Unwatch</button>
+                            <button onClick={() => this.props.watchRemove(val.ID)}>Unwatch</button>
                         )}
                     </th>
                 </tr>

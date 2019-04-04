@@ -7,12 +7,11 @@ import ItemSearchContainer from "../containers/ItemSearchContainer";
 
 class App extends Component {
     render() {
-        // TODO make / watcher and /search search, this is just debug
         return (
             <HashRouter>
                 <Layout>
-                    <Route path="/" exact component={ItemSearchContainer}/>
-                    <Route path="/search" exact component={ItemWatcherContainer}/>
+                    <Route path="/" exact component={ItemWatcherContainer}/>
+                    <Route path="/search" exact component={ItemSearchContainer}/>
                 </Layout>
             </HashRouter>
         );

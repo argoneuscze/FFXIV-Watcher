@@ -2,7 +2,7 @@ import {ITEM_SEARCH_FAILURE, ITEM_SEARCH_REQUEST, ITEM_SEARCH_SUCCESS} from "../
 
 export function itemSearchFetch(itemName) {
     return dispatch => {
-        dispatch(itemSearchStart());
+        dispatch(itemSearchRequest());
 
         // TODO axios get api
         // e.g. https://xivapi.com/search?indexes=Item&string=rakshasa%20ring
@@ -70,7 +70,7 @@ export function itemSearchFetch(itemName) {
     }
 }
 
-function itemSearchStart() {
+function itemSearchRequest() {
     return {
         type: ITEM_SEARCH_REQUEST
     }
